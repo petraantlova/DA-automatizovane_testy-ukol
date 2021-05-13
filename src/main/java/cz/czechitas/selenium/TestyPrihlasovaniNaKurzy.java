@@ -113,24 +113,6 @@ public class TestyPrihlasovaniNaKurzy {
 
     }
 
-    /*@Test
-    public void zviratVTabulceMusiByt7() {
-        prohlizec.navigate().to("https://automation3.shinekamil.repl.co/");
-        WebElement zalozkaTabulka = prohlizec.findElement(By.linkText("Table"));
-        zalozkaTabulka.click();
-
-        List<WebElement> seznamZvirat = prohlizec.findElements(By.xpath("//table/tbody/tr/td[1]"));
-        Assertions.assertEquals(7, seznamZvirat.size());
-    }*/
-
-    /*@Test
-    public void prvniZvireVTabulceMusiBytKocka() {
-        prohlizec.navigate().to("https://automation3.shinekamil.repl.co/");
-        WebElement zalozkaTabulka = prohlizec.findElement(By.linkText("Table"));
-        zalozkaTabulka.click();
-    */
-
-
     @AfterEach
     public void tearDown() {
         prohlizec.close();
