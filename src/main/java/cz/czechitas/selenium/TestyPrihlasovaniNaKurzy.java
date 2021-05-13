@@ -36,7 +36,7 @@ public class TestyPrihlasovaniNaKurzy {
     }
 
     @Test
-    public void prihlaseniDiteteDoKurzu() {
+    public void vyberKurzuProDitePrihlaseniRodiceVytvoreniPrihlasky() {
         prohlizec.navigate().to("https://cz-test-jedna.herokuapp.com/11-trimesicni-kurzy-webu");
         WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div/div/div[2]/a"));
         tlacitkoVytvoritPrihlasku.click();
@@ -46,12 +46,12 @@ public class TestyPrihlasovaniNaKurzy {
         polickoHeslo.sendKeys("DAczechitas2021");
         WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/div/form/div[3]/div/button"));
         mensiTlacitkoPrihlasit.click();
-        //WebElement polickoTermin = prohlizec.findElement(By.id("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/button/div/div/div"));
-        //polickoTermin.click();
-        //WebElement polickoVyhledaniTerminu = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/div/div[1]/input"));
-        //polickoVyhledaniTerminu.click();
-        //polickoVyhledaniTerminu.sendKeys("2");
-        //polickoVyhledaniTerminu.sendKeys("\n");
+        WebElement polickoTermin = prohlizec.findElement(By.id("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/button"));
+        polickoTermin.click();
+        WebElement polickoVyhledaniTerminu = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/div/div[1]/input"));
+        polickoVyhledaniTerminu.click();
+        WebElement polickoSKonkretnimTerminem = prohlizec.findElement(By.xpath("//*[@id=\"bs-select-1-0\"]"));
+        polickoSKonkretnimTerminem.click();
         WebElement polickoJmenoZaka = prohlizec.findElement(By.id("forename"));
         polickoJmenoZaka.sendKeys("Manual");
         WebElement polickoPrijmeniZaka = prohlizec.findElement(By.id("surname"));
@@ -62,15 +62,55 @@ public class TestyPrihlasovaniNaKurzy {
         zaskrtavaciPolickoPlatbaHotove.click();
         WebElement zaskrtavaciPolickoSouhlasSPodminkami = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/span/label"));
         zaskrtavaciPolickoSouhlasSPodminkami.click();
-        //WebElement tlacitkoVytvoritPrihlaskuNaKurz = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/input"));
-        //tlacitkoVytvoritPrihlaskuNaKurz.click();
-        //WebElement zalozkaPrihlasky = prohlizec.findElement(By.xpath("/html/body/div/header/div/nav/span[2]/a"));
-        //zalozkaPrihlasky.click();
+        WebElement tlacitkoVytvoritPrihlaskuNaKurz = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/input"));
+        tlacitkoVytvoritPrihlaskuNaKurz.click();
+        WebElement zalozkaPrihlasky = prohlizec.findElement(By.xpath("/html/body/div/header/div/nav/span[2]/a"));
+        zalozkaPrihlasky.click();
 
         //List<WebElement> seznamPrihlasek = prohlizec.findElements(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[1]"));
         //WebElement elementPrvniPrihlaska = seznamPrihlasek.get(0);
         //String prvniPrihlaska = elementPrvniPrihlaska.getText();
-        //Assertions.assertEquals("Automat Test", prvniPrihlaska);
+        //Assertions.assertEquals("Automat Test", seznamPrihlasek.size);
+    }
+
+    @Test
+    public void prihlaseniRodiceVyberKurzuVytvoreniPrihlasky() {
+        prohlizec.navigate().to("https://cz-test-jedna.herokuapp.com/");
+        WebElement tlacitkoPrihlasit = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[2]/a"));
+        tlacitkoPrihlasit.click();
+        WebElement polickoEmail = prohlizec.findElement(By.id("email"));
+        polickoEmail.sendKeys("panitestova@gmail.com");
+        WebElement polickoHeslo = prohlizec.findElement(By.id("password"));
+        polickoHeslo.sendKeys("DAczechitas2021");
+        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/div/form/div[3]/div/button"));
+        mensiTlacitkoPrihlasit.click();
+        WebElement zalozkaProRodice = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[1]/div/a"));
+        zalozkaProRodice.click();
+        WebElement dropDownVytvoritPrihlasku = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[1]/div/div/a[2]"));
+        dropDownVytvoritPrihlasku.click();
+        WebElement tlacitkoProgramovaniViceInformaci = prohlizec.findElement(By.xpath("/html/body/div/div/div[1]/div[5]/div/div[2]/a"));
+        tlacitkoProgramovaniViceInformaci.click();
+        WebElement tlacitkoJavaVytvoritPrihlasku = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div[1]/div/div[2]/a"));
+        tlacitkoJavaVytvoritPrihlasku.click();
+        WebElement polickoVyberteTermin = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/button/div/div/div"));
+        polickoVyberteTermin.click();
+        WebElement polickoPrazdnyTermin = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/div/div[1]"));
+        polickoPrazdnyTermin.click();
+        WebElement polickoKonkretniTermin = prohlizec.findElement(By.xpath("//*[@id=\"bs-select-1-0\"]"));
+        polickoKonkretniTermin.click();
+        WebElement polickoJmenoZaka = prohlizec.findElement(By.id("forename"));
+        polickoJmenoZaka.sendKeys("Melichar");
+        WebElement polickoPrijmeniZaka = prohlizec.findElement(By.id("surname"));
+        polickoPrijmeniZaka.sendKeys("Test");
+        WebElement polickoDatumNarozeniZaka = prohlizec.findElement(By.id("birthday"));
+        polickoDatumNarozeniZaka.sendKeys("13.05.2010");
+        WebElement zaskrtavaciPolickoPlatbaBankovnimPrevodem = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[8]/td[2]/span[1]/label"));
+        zaskrtavaciPolickoPlatbaBankovnimPrevodem.click();
+        WebElement zaskrtavaciPolickoSouhlasSPodminkami = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/span/label"));
+        zaskrtavaciPolickoSouhlasSPodminkami.click();
+        WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/input"));
+        tlacitkoVytvoritPrihlasku.click();
+
     }
 
     /*@Test
