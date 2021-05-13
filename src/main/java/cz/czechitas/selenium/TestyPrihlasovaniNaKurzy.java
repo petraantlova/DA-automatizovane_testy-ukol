@@ -46,14 +46,14 @@ public class TestyPrihlasovaniNaKurzy {
         polickoHeslo.sendKeys("DAczechitas2021");
         WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/div/form/div[3]/div/button"));
         mensiTlacitkoPrihlasit.click();
-        WebElement polickoTermin = prohlizec.findElement(By.id("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/button"));
+        WebElement polickoTermin = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/button"));
         polickoTermin.click();
-        WebElement polickoVyhledaniTerminu = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/div/div[1]/input"));
-        polickoVyhledaniTerminu.click();
-        WebElement polickoSKonkretnimTerminem = prohlizec.findElement(By.xpath("//*[@id=\"bs-select-1-0\"]"));
-        polickoSKonkretnimTerminem.click();
+        WebElement polickoPrazdnyTermin = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/div/div[1]"));
+        polickoPrazdnyTermin.click();
+        WebElement polickoKonkretniTermin = prohlizec.findElement(By.id("bs-select-1-0"));
+        polickoKonkretniTermin.click();
         WebElement polickoJmenoZaka = prohlizec.findElement(By.id("forename"));
-        polickoJmenoZaka.sendKeys("Manual");
+        polickoJmenoZaka.sendKeys("Melichar");
         WebElement polickoPrijmeniZaka = prohlizec.findElement(By.id("surname"));
         polickoPrijmeniZaka.sendKeys("Test");
         WebElement polickoDatumNarozeniZaka = prohlizec.findElement(By.id("birthday"));
@@ -110,6 +110,8 @@ public class TestyPrihlasovaniNaKurzy {
         zaskrtavaciPolickoSouhlasSPodminkami.click();
         WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/input"));
         tlacitkoVytvoritPrihlasku.click();
+        WebElement zalozkaPrihlasky = prohlizec.findElement(By.xpath("/html/body/div/header/div/nav/span[2]/a"));
+        zalozkaPrihlasky.click();
 
     }
 
