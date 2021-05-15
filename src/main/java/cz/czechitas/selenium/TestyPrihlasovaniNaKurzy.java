@@ -116,8 +116,6 @@ public class TestyPrihlasovaniNaKurzy {
         zaskrtavaciPolickoSouhlasSPodminkami.click();
         WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.className("qa-submit-button"));
         tlacitkoVytvoritPrihlasku.click();
-        //WebElement zalozkaPrihlasky = prohlizec.findElement(By.xpath("/html/body/div/header/div/nav/span[2]/a"));
-        //zalozkaPrihlasky.click();
 
         WebElement potvrzeniPrihlasky = prohlizec.findElement(By.xpath("//*[text()='Stáhnout potvrzení o přihlášení']"));
         Assertions.assertNotNull(potvrzeniPrihlasky);
