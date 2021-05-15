@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 public class TestyPrihlasovaniNaKurzy {
 
+    private static final String URL_APLIKACE = "https://cz-test-dva.herokuapp.com/";
+
     WebDriver prohlizec;
 
     @BeforeEach
@@ -24,21 +26,27 @@ public class TestyPrihlasovaniNaKurzy {
 
     @Test
     public void prihlaseniRodiceDoUctu() {
-        prohlizec.navigate().to("https://cz-test-jedna.herokuapp.com/");
-        WebElement tlacitkoPrihlasit = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[2]/a"));
+        prohlizec.navigate().to(URL_APLIKACE);
+        WebElement tlacitkoPrihlasit = prohlizec.findElement(By.className("qa-login-button"));
         tlacitkoPrihlasit.click();
+
         WebElement polickoEmail = prohlizec.findElement(By.id("email"));
         polickoEmail.sendKeys("panitestova@gmail.com");
         WebElement polickoHeslo = prohlizec.findElement(By.id("password"));
         polickoHeslo.sendKeys("DAczechitas2021");
-        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/div/form/div[3]/div/button"));
+        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("//button[contains (@class, 'qa-login-button')]"));
         mensiTlacitkoPrihlasit.click();
+
+        Assertions.assertTrue(prohlizec.getCurrentUrl().endsWith("/zaci"));
+        WebElement nadpisStranky = prohlizec.findElement(By.xpath("//header//h1"));
+        Assertions.assertEquals("Přihlášky", nadpisStranky.getText());
     }
 
     @Test
     public void vyberKurzuProDitePrihlaseniRodiceVytvoreniPrihlasky() {
-        prohlizec.navigate().to("https://cz-test-jedna.herokuapp.com/11-trimesicni-kurzy-webu");
-        WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div/div/div[2]/a"));
+        String urlVyberKurzu = URL_APLIKACE + "11-trimesicni-kurzy-webu";
+        prohlizec.navigate().to(urlVyberKurzu);
+        WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.className("btn-primary"));
         tlacitkoVytvoritPrihlasku.click();
         WebElement polickoEmail = prohlizec.findElement(By.id("email"));
         polickoEmail.sendKeys("panitestova@gmail.com");
