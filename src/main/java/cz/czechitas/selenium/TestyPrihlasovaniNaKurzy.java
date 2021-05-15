@@ -80,26 +80,27 @@ public class TestyPrihlasovaniNaKurzy {
 
     @Test
     public void prihlaseniRodiceVyberKurzuVytvoreniPrihlasky() {
-        prohlizec.navigate().to("https://cz-test-jedna.herokuapp.com/");
-        WebElement tlacitkoPrihlasit = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[2]/a"));
+        prohlizec.navigate().to(URL_APLIKACE);
+        WebElement tlacitkoPrihlasit = prohlizec.findElement(By.className("qa-login-button"));
         tlacitkoPrihlasit.click();
+
         WebElement polickoEmail = prohlizec.findElement(By.id("email"));
         polickoEmail.sendKeys("panitestova@gmail.com");
         WebElement polickoHeslo = prohlizec.findElement(By.id("password"));
         polickoHeslo.sendKeys("DAczechitas2021");
-        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/div/form/div[3]/div/button"));
+        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("//button[contains (@class, 'qa-login-button')]"));
         mensiTlacitkoPrihlasit.click();
-        WebElement zalozkaProRodice = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[1]/div/a"));
+        WebElement zalozkaProRodice = prohlizec.findElement(By.className("qa-for-parents-button"));
         zalozkaProRodice.click();
-        WebElement dropDownVytvoritPrihlasku = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[1]/div/div/a[2]"));
+        WebElement dropDownVytvoritPrihlasku = prohlizec.findElement(By.className("qa-new-application-button"));
         dropDownVytvoritPrihlasku.click();
-        WebElement tlacitkoProgramovaniViceInformaci = prohlizec.findElement(By.xpath("/html/body/div/div/div[1]/div[5]/div/div[2]/a"));
+        WebElement tlacitkoProgramovaniViceInformaci = prohlizec.findElement(By.xpath("//div[2]/a"));
         tlacitkoProgramovaniViceInformaci.click();
-        WebElement tlacitkoJavaVytvoritPrihlasku = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div[1]/div/div[2]/a"));
+        WebElement tlacitkoJavaVytvoritPrihlasku = prohlizec.findElement(By.xpath("//div[2]/a"));
         tlacitkoJavaVytvoritPrihlasku.click();
-        WebElement polickoVyberteTermin = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/button/div/div/div"));
+        WebElement polickoVyberteTermin = prohlizec.findElement(By.className("bs-placeholder"));
         polickoVyberteTermin.click();
-        WebElement polickoPrazdnyTermin = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/div/div[1]"));
+        WebElement polickoPrazdnyTermin = prohlizec.findElement(By.className("bs-searchbox"));
         polickoPrazdnyTermin.click();
         WebElement polickoKonkretniTermin = prohlizec.findElement(By.xpath("//*[@id=\"bs-select-1-0\"]"));
         polickoKonkretniTermin.click();
@@ -109,16 +110,17 @@ public class TestyPrihlasovaniNaKurzy {
         polickoPrijmeniZaka.sendKeys("Test");
         WebElement polickoDatumNarozeniZaka = prohlizec.findElement(By.id("birthday"));
         polickoDatumNarozeniZaka.sendKeys("13.05.2010");
-        WebElement zaskrtavaciPolickoPlatbaBankovnimPrevodem = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[8]/td[2]/span[1]/label"));
+        WebElement zaskrtavaciPolickoPlatbaBankovnimPrevodem = prohlizec.findElement(By.xpath("//tr[8]/td[2]/span[1]/label"));
         zaskrtavaciPolickoPlatbaBankovnimPrevodem.click();
-        WebElement zaskrtavaciPolickoSouhlasSPodminkami = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/span/label"));
+        WebElement zaskrtavaciPolickoSouhlasSPodminkami = prohlizec.findElement(By.xpath("//tr[11]/td[2]/span/label"));
         zaskrtavaciPolickoSouhlasSPodminkami.click();
-        WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/input"));
+        WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.className("qa-submit-button"));
         tlacitkoVytvoritPrihlasku.click();
-        WebElement zalozkaPrihlasky = prohlizec.findElement(By.xpath("/html/body/div/header/div/nav/span[2]/a"));
-        zalozkaPrihlasky.click();
+        //WebElement zalozkaPrihlasky = prohlizec.findElement(By.xpath("/html/body/div/header/div/nav/span[2]/a"));
+        //zalozkaPrihlasky.click();
 
-        //chybi assert - dodelavam
+        WebElement potvrzeniPrihlasky = prohlizec.findElement(By.xpath("//*[text()='Stáhnout potvrzení o přihlášení']"));
+        Assertions.assertNotNull(potvrzeniPrihlasky);
 
     }
 
