@@ -48,15 +48,16 @@ public class TestyPrihlasovaniNaKurzy {
         prohlizec.navigate().to(urlVyberKurzu);
         WebElement tlacitkoVytvoritPrihlasku = prohlizec.findElement(By.className("btn-primary"));
         tlacitkoVytvoritPrihlasku.click();
+
         WebElement polickoEmail = prohlizec.findElement(By.id("email"));
         polickoEmail.sendKeys("panitestova@gmail.com");
         WebElement polickoHeslo = prohlizec.findElement(By.id("password"));
         polickoHeslo.sendKeys("DAczechitas2021");
-        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/div/form/div[3]/div/button"));
+        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("//button[contains (@class, 'qa-login-button')]"));
         mensiTlacitkoPrihlasit.click();
-        WebElement polickoTermin = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/button"));
+        WebElement polickoTermin = prohlizec.findElement(By.className("bs-placeholder"));
         polickoTermin.click();
-        WebElement polickoPrazdnyTermin = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[2]/td[2]/div/div/div[1]"));
+        WebElement polickoPrazdnyTermin = prohlizec.findElement(By.className("bs-searchbox"));
         polickoPrazdnyTermin.click();
         WebElement polickoKonkretniTermin = prohlizec.findElement(By.id("bs-select-1-0"));
         polickoKonkretniTermin.click();
@@ -66,21 +67,15 @@ public class TestyPrihlasovaniNaKurzy {
         polickoPrijmeniZaka.sendKeys("Test");
         WebElement polickoDatumNarozeniZaka = prohlizec.findElement(By.id("birthday"));
         polickoDatumNarozeniZaka.sendKeys("12.05.2012");
-        WebElement zaskrtavaciPolickoPlatbaHotove = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[8]/td[2]/span[4]/label"));
+        WebElement zaskrtavaciPolickoPlatbaHotove = prohlizec.findElement(By.xpath("//table/tbody/tr[8]/td[2]/span[4]/label"));
         zaskrtavaciPolickoPlatbaHotove.click();
-        WebElement zaskrtavaciPolickoSouhlasSPodminkami = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/span/label"));
+        WebElement zaskrtavaciPolickoSouhlasSPodminkami = prohlizec.findElement(By.xpath("//table/tbody/tr[11]/td[2]/span/label"));
         zaskrtavaciPolickoSouhlasSPodminkami.click();
-        WebElement tlacitkoVytvoritPrihlaskuNaKurz = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/form/table/tbody/tr[11]/td[2]/input"));
+        WebElement tlacitkoVytvoritPrihlaskuNaKurz = prohlizec.findElement(By.className("qa-submit-button"));
         tlacitkoVytvoritPrihlaskuNaKurz.click();
-        WebElement zalozkaPrihlasky = prohlizec.findElement(By.xpath("/html/body/div/header/div/nav/span[2]/a"));
-        zalozkaPrihlasky.click();
 
-        //chybi assert - dodelavam
-
-        //List<WebElement> seznamPrihlasek = prohlizec.findElements(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[1]"));
-        //WebElement elementPrvniPrihlaska = seznamPrihlasek.get(0);
-        //String prvniPrihlaska = elementPrvniPrihlaska.getText();
-        //Assertions.assertEquals("Automat Test", seznamPrihlasek.size);
+        WebElement potvrzeniPrihlasky = prohlizec.findElement(By.xpath("//*[text()='Stáhnout potvrzení o přihlášení']"));
+        Assertions.assertNotNull(potvrzeniPrihlasky);
     }
 
     @Test
