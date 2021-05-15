@@ -119,31 +119,30 @@ public class TestyPrihlasovaniNaKurzy {
 
         WebElement potvrzeniPrihlasky = prohlizec.findElement(By.xpath("//*[text()='Stáhnout potvrzení o přihlášení']"));
         Assertions.assertNotNull(potvrzeniPrihlasky);
-
     }
 
     @Test
     public void zmenaHeslaUzivatele() {
-        prohlizec.navigate().to("https://cz-test-jedna.herokuapp.com/");
-        WebElement tlacitkoPrihlasit = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[2]/a"));
+        prohlizec.navigate().to(URL_APLIKACE);
+        WebElement tlacitkoPrihlasit = prohlizec.findElement(By.className("qa-login-button"));
         tlacitkoPrihlasit.click();
+
         WebElement polickoEmail = prohlizec.findElement(By.id("email"));
         polickoEmail.sendKeys("panitestova@gmail.com");
         WebElement polickoHeslo = prohlizec.findElement(By.id("password"));
         polickoHeslo.sendKeys("DAczechitas2021");
-        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/div/form/div[3]/div/button"));
+        WebElement mensiTlacitkoPrihlasit = prohlizec.findElement(By.xpath("//button[contains (@class, 'qa-login-button')]"));
         mensiTlacitkoPrihlasit.click();
-        WebElement tlacitkoJmenoUzivatele = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[2]/div/a"));
+        WebElement tlacitkoJmenoUzivatele = prohlizec.findElement(By.className("qa-logged-in-username"));
         tlacitkoJmenoUzivatele.click();
-        WebElement tlacitkoProfil = prohlizec.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/div[2]/div/div/a[1]"));
+        WebElement tlacitkoProfil = prohlizec.findElement(By.className("qa-user-profile-button"));
         tlacitkoProfil.click();
         WebElement polickoZadejNoveHeslo = prohlizec.findElement(By.id("password"));
         polickoZadejNoveHeslo.sendKeys("TAczechitas2021");
-        WebElement polickoZmenaHeslaKontrolaHesla = prohlizec.findElement(By.id("password-confirm"));
-        polickoZmenaHeslaKontrolaHesla.sendKeys("TAczechitas2021");
-        WebElement tlacitkoZmenit = prohlizec.findElement(By.xpath("/html/body/div/div/div/div/div/div[2]/form/div[4]/div/button"));
+        WebElement polickoKontrolaHesla = prohlizec.findElement(By.id("password-confirm"));
+        polickoKontrolaHesla.sendKeys("TAczechitas2021");
+        WebElement tlacitkoZmenit = prohlizec.findElement(By.className("qa-login-button"));
         tlacitkoZmenit.click();
-
     }
 
     @AfterEach
